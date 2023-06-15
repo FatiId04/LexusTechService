@@ -1,3 +1,32 @@
 <resources>
     <string name="app_name">LexusTechService</string>
+    <string name="se_connecter">Se Connecter</string>
+    <string name="connexion">Connexion</string>
+    <string name="valider">Valider</string>
+    <string name="partager">Partager</string>
+    <string name="identifiant">  Identifiant</string>
+    <string name="mot_de_passe">  Mot de passe</string>
+    <string name="nom_de_societe">  Nom de société</string>
+    <string name="imei">  IMEI</string>
+    <string name="carte_sim">  Numéro de carte sim</string>
+    <string name="marque_voiture">  Marque de voiture</string>
+    <string name="marque_gps">  Marque de GPS</string>
+    <string name="matricule">  Matricule</string>
+    <string name="kilometrage">  Kilométrage</string>
+    <string-array name="type_de_service">
+        <item>  Type de service</item>
+        <item>branchement</item>
+        <item>installation</item>
+        <item>changement de carte sim</item>
+        <item>changement de boitier</item>
+        <item>débranchement</item>
+        <item>programmation</item>
+    </string-array>
+    <string-array name="anti_demmarage">
+        <item>Anti_démmarage</item>
+        <item>avec relai</item>
+        <item>sans relai</item>
+        <item>Localisation</item>
+    </string-array>
+
 </resources>

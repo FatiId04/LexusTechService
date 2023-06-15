@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Tech">
+
+ <ScrollView
+     android:layout_width="fill_parent"
+     android:layout_height="fill_parent"
+     android:scrollbars="vertical">
+
+  <LinearLayout
+      android:layout_width="fill_parent"
+      android:layout_height="fill_parent"
+      android:layout_margin="20dp"
+      android:orientation="vertical"
+      >
+
+   <EditText
+       android:id="@+id/nom_de_societe"
+       android:layout_width="fill_parent"
+       android:layout_height="60dp"
+       android:layout_gravity="center"
+       android:background="@drawable/style"
+       android:hint="@string/nom_de_societe"
+       android:layout_marginTop="65dp"
+        />
+
+   <Spinner
+       android:id="@+id/type_de_service"
+       android:layout_width="fill_parent"
+       android:layout_height="60dp"
+       android:layout_gravity="center"
+       android:background="@drawable/style"
+       android:hint="string/nom_de_societe"
+       android:entries="@array/type_de_service"
+       android:layout_marginTop="25dp"/>
+
+   <EditText
+       android:id="@+id/imei"
+       android:layout_width="fill_parent"
+       android:layout_height="60dp"
+       android:layout_gravity="center"
+       android:background="@drawable/style"
+       android:hint="@string/imei"
+       android:layout_marginTop="25dp"/>
+
+   <EditText
+       android:id="@+id/carte_sim"
+       android:layout_width="fill_parent"
+       android:layout_height="60dp"
+       android:layout_gravity="center"
+       android:background="@drawable/style"
+       android:hint="@string/carte_sim"
+       android:layout_marginTop="25dp"/>
+
+   <EditText
+       android:id="@+id/marque_voiture"
+       android:layout_width="fill_parent"
+       android:layout_height="60dp"
+       android:layout_gravity="center"
+       android:background="@drawable/style"
+       android:hint="@string/marque_voiture"
+       android:layout_marginTop="25dp"/>
+
+   <EditText
+       android:id="@+id/matricule"
+       android:layout_width="fill_parent"
+       android:layout_height="60dp"
+       android:layout_gravity="center"
+       android:background="@drawable/style"
+       android:hint="@string/matricule"
+       android:layout_marginTop="25dp"/>
+
+   <EditText
+       android:id="@+id/kilometrage"
+       android:layout_width="fill_parent"
+       android:layout_height="60dp"
+       android:layout_gravity="center"
+       android:background="@drawable/style"
+       android:hint="@string/kilometrage"
+       android:layout_marginTop="25dp"/>
+
+   <EditText
+       android:id="@+id/marque_gps"
+       android:layout_width="fill_parent"
+       android:layout_height="60dp"
+       android:layout_gravity="center"
+       android:background="@drawable/style"
+       android:hint="@string/marque_gps"
+       android:layout_marginTop="25dp"/>
+
+   <Spinner
+       android:id="@+id/anti_demmarage"
+       android:layout_width="fill_parent"
+       android:layout_height="60dp"
+       android:layout_gravity="center"
+       android:background="@drawable/style"
+       android:entries="@array/anti_demmarage"
+       android:layout_marginTop="25dp"/>
+
+   <Button
+       android:layout_width="300dp"
+       android:layout_height="60dp"
+       android:layout_gravity="center"
+       android:background="@drawable/style2"
+       android:text="@string/valider"
+       android:textSize="22sp"
+       android:textStyle="bold"
+       android:textColor="@color/white"
+       android:layout_marginTop="25dp" />
+   <Button
+       android:layout_width="300dp"
+       android:layout_height="60dp"
+       android:layout_gravity="center"
+       android:background="@drawable/style2"
+       android:text="@string/partager"
+       android:textSize="22sp"
+       android:textStyle="bold"
+       android:textColor="@color/white"
+       android:layout_marginTop="25dp"
+       android:layout_marginBottom="25dp"/>
+
+  </LinearLayout>
+
+ </ScrollView>
+
+</RelativeLayout>

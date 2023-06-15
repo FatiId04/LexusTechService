@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="400dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/style_card"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.1"
+            app:layout_constraintHorizontal_bias="0.5"
+            >
+
+
+            <TextView
+                android:id="@+id/nom_de_societe"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:text="Nom de société"
+                android:textColor="#000"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                />
+
+            <TextView
+                android:id="@+id/type_de_service"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="type de service"
+                android:textSize="20sp"
+                android:textColor="@color/white"
+                app:layout_constraintStart_toStartOf="@+id/nom_de_societe"
+                app:layout_constraintTop_toBottomOf="@+id/nom_de_societe" />
+            <TextView
+                android:id="@+id/marque_gps_imei"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Marque de GPS et IMEI"
+                android:textSize="20sp"
+                android:textColor="@color/white"
+                app:layout_constraintStart_toStartOf="@+id/type_de_service"
+                app:layout_constraintTop_toBottomOf="@+id/type_de_service" />
+            <TextView
+                android:id="@+id/carte_sim"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Num Carte Sim"
+                android:textSize="20sp"
+                android:textColor="@color/white"
+                app:layout_constraintStart_toStartOf="@+id/marque_gps_imei"
+                app:layout_constraintTop_toBottomOf="@+id/marque_gps_imei" />
+            <TextView
+                android:id="@+id/marque_matricule"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Marque voiture/Matricule"
+                android:textSize="20sp"
+                android:textColor="@color/white"
+                app:layout_constraintStart_toStartOf="@+id/carte_sim"
+                app:layout_constraintTop_toBottomOf="@+id/carte_sim" />
+            <TextView
+                android:id="@+id/kilometrage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Kilometrage"
+                android:textSize="20sp"
+                android:textColor="@color/white"
+                app:layout_constraintStart_toStartOf="@+id/marque_matricule"
+                app:layout_constraintTop_toBottomOf="@+id/marque_matricule" />
+            <TextView
+                android:id="@+id/anti_demmarage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Anti_démmarage"
+                android:textSize="20sp"
+                android:textColor="@color/white"
+                app:layout_constraintStart_toStartOf="@+id/kilometrage"
+                app:layout_constraintTop_toBottomOf="@+id/kilometrage" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

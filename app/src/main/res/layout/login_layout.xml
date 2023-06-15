@@ -5,28 +5,81 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <ImageView
+    <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/imageView2"
         android:layout_width="match_parent"
-        android:layout_height="260dp"
-        android:background="@drawable/login"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:src="@drawable/login"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0"
+        app:shapeAppearanceOverlay="@style/roundimageview"
+        />
 
-    <RelativeLayout
-        android:id="@+id/container"
-        android:layout_width="match_parent"
-        android:layout_height="480dp"
+    <TextView
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/connexion"
+        android:textColor="@color/black"
+        android:textSize="35sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.4"
+        app:layout_constraintHorizontal_bias="0.5"
+        />
+    <EditText
+        android:id="@+id/identifiant"
+        android:layout_width="300dp"
+        android:layout_height="55dp"
+        android:hint="@string/identifiant"
+        android:textSize="20sp"
+        android:textStyle="bold"
         android:background="@drawable/style"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.936" >
+        app:layout_constraintVertical_bias="0.53"
+        app:layout_constraintHorizontal_bias="0.5"
+        />
+    <EditText
+        android:id="@+id/mot_de_passe"
+        android:layout_width="300dp"
+        android:layout_height="55dp"
+        android:hint="@string/mot_de_passe"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:background="@drawable/style"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.65"
+        app:layout_constraintHorizontal_bias="0.5"
+        />
+    <Button
+        android:id="@+id/se_connecter"
+        android:layout_width="300dp"
+        android:layout_height="55dp"
+        android:text="@string/se_connecter"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:background="@drawable/style2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.80"
+        app:layout_constraintHorizontal_bias="0.5"
+        />
 
-    </RelativeLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
