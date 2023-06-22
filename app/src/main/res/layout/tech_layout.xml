@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:style="http://schemas.android.com/apk/res-auto"
     tools:context=".Tech">
 
  <ScrollView
@@ -28,15 +29,24 @@
        android:layout_marginTop="65dp"
         />
 
-   <Spinner
-       android:id="@+id/type_de_service"
+   <com.google.android.material.textfield.TextInputLayout
        android:layout_width="fill_parent"
        android:layout_height="60dp"
        android:layout_gravity="center"
-       android:background="@drawable/style"
-       android:hint="string/nom_de_societe"
-       android:entries="@array/type_de_service"
-       android:layout_marginTop="25dp"/>
+       android:hint="Type de service"
+       android:layout_marginTop="25dp"
+      >
+    <AutoCompleteTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/type_de_service"
+        android:inputType="none"
+       >
+
+    </AutoCompleteTextView>
+
+   </com.google.android.material.textfield.TextInputLayout>
+
 
    <EditText
        android:id="@+id/imei"
@@ -92,16 +102,25 @@
        android:hint="@string/marque_gps"
        android:layout_marginTop="25dp"/>
 
-   <Spinner
-       android:id="@+id/anti_demmarage"
+   <com.google.android.material.textfield.TextInputLayout
        android:layout_width="fill_parent"
        android:layout_height="60dp"
        android:layout_gravity="center"
+       android:hint="Anti-Démarrage"
        android:background="@drawable/style"
-       android:entries="@array/anti_demmarage"
-       android:layout_marginTop="25dp"/>
+       android:layout_marginTop="25dp">
+    <AutoCompleteTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/anti_demarrage"
+        android:inputType="none"
+        >
 
+    </AutoCompleteTextView>
+
+   </com.google.android.material.textfield.TextInputLayout>
    <Button
+       android:id="@+id/valider"
        android:layout_width="300dp"
        android:layout_height="60dp"
        android:layout_gravity="center"
@@ -112,6 +131,7 @@
        android:textColor="@color/white"
        android:layout_marginTop="25dp" />
    <Button
+       android:id="@+id/partager"
        android:layout_width="300dp"
        android:layout_height="60dp"
        android:layout_gravity="center"
