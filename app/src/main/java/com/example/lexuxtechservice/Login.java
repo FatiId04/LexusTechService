@@ -20,8 +20,8 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Login  extends AppCompatActivity {
-    private EditText identifiantEditText , passwordEditText;
-    private String identifiant,password;
+    private EditText identifiantEditText, passwordEditText;
+    private String identifiant, password;
     private Button btnLogin;
 
     @Override
@@ -31,16 +31,16 @@ public class Login  extends AppCompatActivity {
 
         identifiantEditText = findViewById(R.id.identifiant);
         passwordEditText = findViewById(R.id.mot_de_passe);
-        btnLogin=findViewById(R.id.se_connecter);
+        btnLogin = findViewById(R.id.se_connecter);
 
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                if(TextUtils.isEmpty(identifiantEditText.getText().toString()) || TextUtils.isEmpty(passwordEditText.getText().toString())){
-                    Toast.makeText(Login.this,"Champs non remplis", Toast.LENGTH_LONG).show();
-                }else{
+                if (TextUtils.isEmpty(identifiantEditText.getText().toString()) || TextUtils.isEmpty(passwordEditText.getText().toString())) {
+                    Toast.makeText(Login.this, "Champs non remplis", Toast.LENGTH_LONG).show();
+                } else {
                     //proceed to login
                     login();
                 }
@@ -50,41 +50,69 @@ public class Login  extends AppCompatActivity {
     }
 
 
-        public void login()
-        {
+    public void login() {
 
-            identifiant=identifiantEditText.getText().toString();
-            password=passwordEditText.getText().toString();
+        identifiant = identifiantEditText.getText().toString();
+        password = passwordEditText.getText().toString();
+        Toast.makeText(Login.this ,identifiant, Toast.LENGTH_SHORT).show();
+        Call<LoginResponse> call = RetrofitClient.getInstance().getApi().login(identifiant, password);
 
-            Call<LoginResponse> call=RetrofitClient.getInstance().getApi().login(identifiant,password);
-
+        if (identifiant.equals("admin")) {
             call.enqueue(new Callback<LoginResponse>() {
                 @Override
                 public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
 
-                        LoginResponse loginResponse=response.body();
-                        if(loginResponse.getError().equals("200")){
-                        Intent intent = new Intent(Login.this,Tech.class);
+                    LoginResponse loginResponse = response.body();
+                    if (loginResponse.getError().equals("200")) {
+                        Intent intent = new Intent(Login.this, Admin.class);
                         startActivity(intent);
-                        Toast.makeText(Login.this,loginResponse.getMessage(),Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Login.this, loginResponse.getMessage(), Toast.LENGTH_SHORT).show();
                         finish();
-                        } else if (loginResponse.getError().equals("400")) {
-                            Toast.makeText(Login.this,loginResponse.getMessage(),Toast.LENGTH_SHORT).show();
+                    } else if (loginResponse.getError().equals("400")) {
+                        Toast.makeText(Login.this, loginResponse.getMessage(), Toast.LENGTH_SHORT).show();
 
-                        }else{
-                            Toast.makeText(Login.this,loginResponse.getMessage(),Toast.LENGTH_SHORT).show();
-                        }
+                    } else {
+                        Toast.makeText(Login.this, loginResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
 
                 }
 
                 @Override
                 public void onFailure(Call<LoginResponse> call, Throwable t) {
-                    Toast.makeText(Login.this,t.getMessage(),Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Login.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+
+                }
+            });
+
+        } else {
+            call.enqueue(new Callback<LoginResponse>() {
+                @Override
+                public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
+
+                    LoginResponse loginResponse = response.body();
+                    if (loginResponse.getError().equals("200")) {
+                        Intent intent1 = new Intent(Login.this, Tech.class);
+                        startActivity(intent1);
+                        Toast.makeText(Login.this, loginResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                        finish();
+                    } else if (loginResponse.getError().equals("400")) {
+                        Toast.makeText(Login.this, loginResponse.getMessage(), Toast.LENGTH_SHORT).show();
+
+                    } else {
+                        Toast.makeText(Login.this, loginResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+
+                }
+
+                @Override
+                public void onFailure(Call<LoginResponse> call, Throwable t) {
+                    Toast.makeText(Login.this, t.getMessage(), Toast.LENGTH_SHORT).show();
 
                 }
             });
         }
 
+    }
 }
 
 

@@ -25,6 +25,7 @@
         </activity>
         <activity android:name=".Login"></activity>
         <activity android:name=".Tech"></activity>
+        <activity android:name=".Admin"></activity>
     </application>
 
 </manifest>
