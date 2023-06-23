@@ -13,8 +13,9 @@
     <string name="marque_gps">  Marque de GPS</string>
     <string name="matricule">  Matricule</string>
     <string name="kilometrage">  Kilométrage</string>
-    <string-array name="service">
-
+    <string-array name="type_de_service">
+        <item>  Type de service</item>
+        <item>  -----------------</item>
         <item>branchement</item>
         <item>installation</item>
         <item>changement de carte sim</item>
@@ -23,7 +24,8 @@
         <item>programmation</item>
     </string-array>
     <string-array name="anti_demarrage">
-
+        <item>Anti_démarrage</item>
+        <item>  -----------------</item>
         <item>avec relai</item>
         <item>sans relai</item>
         <item>Localisation</item>

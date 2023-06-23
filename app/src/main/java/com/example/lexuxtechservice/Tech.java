@@ -23,10 +23,13 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class Tech extends AppCompatActivity {
-    private EditText societeEditText,imeiEditText,simEditText,voitureEditText,matriculeEditText,
-            kilometrageEditText,gpsEditText;
 
-    private Button btnValider,btnPartager;
+    private Spinner serviceSpinner, demarrageSpinner;
+    private EditText societeEditText, imeiEditText, simEditText, voitureEditText, matriculeEditText,
+            kilometrageEditText, gpsEditText;
+
+    private Button btnValider, btnPartager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,76 +42,79 @@ public class Tech extends AppCompatActivity {
         matriculeEditText = findViewById(R.id.matricule);
         kilometrageEditText = findViewById(R.id.kilometrage);
         gpsEditText = findViewById(R.id.marque_gps);
-        btnValider=findViewById(R.id.valider);
-        btnPartager=findViewById(R.id.partager);
+        btnValider = findViewById(R.id.valider);
+        btnPartager = findViewById(R.id.partager);
+        serviceSpinner = findViewById(R.id.type_de_service);
+        demarrageSpinner = findViewById(R.id.anti_demarrage);
 
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.type_de_service, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        serviceSpinner.setAdapter(adapter);
 
-
+        ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(this,
+                R.array.anti_demarrage, android.R.layout.simple_spinner_item);
+        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        demarrageSpinner.setAdapter(adapter2);
 
 
         btnValider.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(TextUtils.isEmpty(societeEditText.getText().toString()) || TextUtils.isEmpty(serviceSpinner.getSelectedItem().toString())||TextUtils.isEmpty(imeiEditText.getText().toString())
+                        || TextUtils.isEmpty(simEditText.getText().toString())||TextUtils.isEmpty(voitureEditText.getText().toString()) ||
+                TextUtils.isEmpty(gpsEditText.getText().toString())||TextUtils.isEmpty(kilometrageEditText.getText().toString()) ||
+                        TextUtils.isEmpty(matriculeEditText.getText().toString())||TextUtils.isEmpty(demarrageSpinner.getSelectedItem().toString())){
+                    Toast.makeText(Tech.this,"Champs non remplis", Toast.LENGTH_LONG).show();
+                }else{
                     register();
+
+                }
             }
         });
     }
 
 
-    public void register()
-    {
-        String service,demarrage;
-        String societe=societeEditText.getText().toString();
-        String  imei=imeiEditText.getText().toString();
-        String sim=simEditText.getText().toString();
-        String voiture=voitureEditText.getText().toString();
-        String matricule=matriculeEditText.getText().toString();
-        String kilometrage=kilometrageEditText.getText().toString();
-        String gps=gpsEditText.getText().toString();
-
-        String [] service_array = new String[]{"branchement","installation","changement de carte sim","changement de boitier","débranchement","programmation"};
-        String [] demarrage_array = new String[]{"avec relai","sans relai","localisation"};
-
-        ArrayAdapter<String> adapter= new ArrayAdapter<>(this,R.layout.drop_down_item,service_array);
-        AutoCompleteTextView autoCompleteTextView=findViewById(R.id.type_de_service);
-        autoCompleteTextView.setAdapter(adapter);
-        autoCompleteTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                service = adapterView.getItemAtPosition(i).toString();
-            }
-        });
+    public void register() {
+        String service ;
+        String demarrage ;
+        String societe = societeEditText.getText().toString();
+        String imei = imeiEditText.getText().toString();
+        String sim = simEditText.getText().toString();
+        String voiture = voitureEditText.getText().toString();
+        String matricule = matriculeEditText.getText().toString();
+        String kilometrage = kilometrageEditText.getText().toString();
+        String gps = gpsEditText.getText().toString();
 
 
-        ArrayAdapter<String> adapter2= new ArrayAdapter<>(this,R.layout.drop_down_item,demarrage_array);
-        AutoCompleteTextView autoCompleteTextView2=findViewById(R.id.anti_demarrage);
-        autoCompleteTextView2.setAdapter(adapter2);
-        autoCompleteTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                demarrage = adapterView.getItemAtPosition(i).toString();
-            }
-        });
+        service=serviceSpinner.getSelectedItem().toString();
 
 
-        Call<RegisterResponse> call=RetrofitClientRegister.getInstance().getApi().register(societe,service,imei,sim,
-                voiture,matricule,kilometrage,gps,demarrage,"1");
+        demarrage=demarrageSpinner.getSelectedItem().toString();
+
+        Call<RegisterResponse> call = RetrofitClientRegister.getInstance().getApi().register(societe, service, imei, sim,
+                voiture, matricule, kilometrage, gps, demarrage, "1");
 
         call.enqueue(new Callback<RegisterResponse>() {
             @Override
             public void onResponse(Call<RegisterResponse> call, Response<RegisterResponse> response) {
-                RegisterResponse registerResponse =response.body();
-                if(response.isSuccessful()){
+                RegisterResponse registerResponse = response.body();
+                if (registerResponse.getError().equals(000) ){
 
-                    Toast.makeText(Tech.this,registerResponse.getMessage(),Toast.LENGTH_SHORT);
+                    Toast.makeText(Tech.this, registerResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(Tech.this, registerResponse.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<RegisterResponse> call, Throwable t) {
-                Toast.makeText(Tech.this,t.getMessage(),Toast.LENGTH_SHORT);
+                Toast.makeText(Tech.this, t.getMessage(), Toast.LENGTH_SHORT).show();
 
             }
         });
     }
+
+
+
 }

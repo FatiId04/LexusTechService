@@ -10,7 +10,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitClient {
 
-    private static String BASE_URL="http://10.0.2.2/apiLexus/login.php/";
+    private static String BASE_URL="http://192.168.0.199/apiLexus/login.php/";
     private static RetrofitClient retrofitClient;
     private static Retrofit retrofit = null;
     private OkHttpClient.Builder builder=new OkHttpClient.Builder();
@@ -26,7 +26,7 @@ public class RetrofitClient {
 
         retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create()).client(builder.build())
+                .addConverterFactory(GsonConverterFactory.create(gson)).client(builder.build())
                 .build();
     }
     public static  synchronized  RetrofitClient getInstance(){

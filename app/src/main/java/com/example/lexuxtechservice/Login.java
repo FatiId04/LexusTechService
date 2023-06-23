@@ -61,17 +61,25 @@ public class Login  extends AppCompatActivity {
             call.enqueue(new Callback<LoginResponse>() {
                 @Override
                 public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
-                    LoginResponse loginResponse=response.body();
-                    if(response.isSuccessful()){
+
+                        LoginResponse loginResponse=response.body();
+                        if(loginResponse.getError().equals("200")){
                         Intent intent = new Intent(Login.this,Tech.class);
                         startActivity(intent);
-                        Toast.makeText(Login.this,loginResponse.getMessage(),Toast.LENGTH_SHORT);
-                    }
+                        Toast.makeText(Login.this,loginResponse.getMessage(),Toast.LENGTH_SHORT).show();
+                        finish();
+                        } else if (loginResponse.getError().equals("400")) {
+                            Toast.makeText(Login.this,loginResponse.getMessage(),Toast.LENGTH_SHORT).show();
+
+                        }else{
+                            Toast.makeText(Login.this,loginResponse.getMessage(),Toast.LENGTH_SHORT).show();
+                        }
+
                 }
 
                 @Override
                 public void onFailure(Call<LoginResponse> call, Throwable t) {
-                    Toast.makeText(Login.this,t.getMessage(),Toast.LENGTH_SHORT);
+                    Toast.makeText(Login.this,t.getMessage(),Toast.LENGTH_SHORT).show();
 
                 }
             });

@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:style="http://schemas.android.com/apk/res-auto"
     tools:context=".Tech">
 
  <ScrollView
@@ -29,23 +28,14 @@
        android:layout_marginTop="65dp"
         />
 
-   <com.google.android.material.textfield.TextInputLayout
+   <Spinner
+       android:id="@+id/type_de_service"
        android:layout_width="fill_parent"
        android:layout_height="60dp"
        android:layout_gravity="center"
-       android:hint="Type de service"
-       android:layout_marginTop="25dp"
-      >
-    <AutoCompleteTextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/type_de_service"
-        android:inputType="none"
-       >
-
-    </AutoCompleteTextView>
-
-   </com.google.android.material.textfield.TextInputLayout>
+       android:background="@drawable/style"
+       android:entries="@array/type_de_service"
+       android:layout_marginTop="25dp"/>
 
 
    <EditText
@@ -102,23 +92,15 @@
        android:hint="@string/marque_gps"
        android:layout_marginTop="25dp"/>
 
-   <com.google.android.material.textfield.TextInputLayout
+   <Spinner
+       android:id="@+id/anti_demarrage"
        android:layout_width="fill_parent"
        android:layout_height="60dp"
        android:layout_gravity="center"
-       android:hint="Anti-Démarrage"
        android:background="@drawable/style"
-       android:layout_marginTop="25dp">
-    <AutoCompleteTextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/anti_demarrage"
-        android:inputType="none"
-        >
+       android:entries="@array/anti_demarrage"
+       android:layout_marginTop="25dp"/>
 
-    </AutoCompleteTextView>
-
-   </com.google.android.material.textfield.TextInputLayout>
    <Button
        android:id="@+id/valider"
        android:layout_width="300dp"

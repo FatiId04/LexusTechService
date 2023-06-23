@@ -9,7 +9,7 @@ import android.os.Looper;
 
 public class SplashScreen extends AppCompatActivity {
 
-    private static int SPLASH_TIME_OUT=2000; //Temps d'attente en milliseconde (ici, 1,5 secondes)
+    private static int SPLASH_TIME_OUT=1500; //Temps d'attente en milliseconde (ici, 1,5 secondes)
 
 
     @Override
