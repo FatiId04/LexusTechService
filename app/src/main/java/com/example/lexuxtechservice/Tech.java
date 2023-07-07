@@ -97,9 +97,11 @@ public class Tech extends AppCompatActivity {
         serviceSpinner = findViewById(R.id.type_de_service);
         demarrageSpinner = findViewById(R.id.anti_demarrage);
         AddressText= findViewById(R.id.adresse);
-        imeiEditText.setInputType(InputType.TYPE_CLASS_NUMBER);
-        kilometrageEditText.setInputType(InputType.TYPE_CLASS_NUMBER);
-        simEditText.setInputType(InputType.TYPE_CLASS_NUMBER);
+
+
+        imeiEditText.setInputType(InputType.TYPE_CLASS_PHONE);
+        kilometrageEditText.setInputType(InputType.TYPE_CLASS_PHONE);
+        simEditText.setInputType(InputType.TYPE_CLASS_PHONE);
 
 
 
