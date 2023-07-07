@@ -24,16 +24,18 @@ public interface Api {
     @Headers({"Accept: application/json", "Content-Type:text/html"})
     @GET("register.php")
     Call<RegisterResponse> register(
-            @Query("société") String societe,
+            @Query("societe") String societe,
             @Query("service") String service,
-            @Query("IMEI") String imei,
+            @Query("imei") String imei,
             @Query("sim") String sim,
             @Query("voiture") String voiture,
             @Query("matricule") String matricule,
-            @Query("kilométrage") String kilometrage,
+            @Query("kilometrage") String kilometrage,
             @Query("gps") String gps,
-            @Query("démarrage") String demarrage,
-            @Query("localisation") String localisation
+            @Query("demarrage") String demarrage,
+            @Query("localisation") String localisation,
+            @Query("date") String date,
+            @Query("horaire") String horaire
     );
 
     @Headers({"Accept: application/json", "Content-Type:text/html"})

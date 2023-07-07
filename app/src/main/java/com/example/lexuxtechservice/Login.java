@@ -6,9 +6,9 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.lexuxtechservice.Response.LoginResponse;
@@ -16,8 +16,6 @@ import com.example.lexuxtechservice.Response.LoginResponse;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Login  extends AppCompatActivity {
     private EditText identifiantEditText, passwordEditText;
@@ -28,6 +26,12 @@ public class Login  extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_layout);
+
+
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.hide();
+        }
 
         identifiantEditText = findViewById(R.id.identifiant);
         passwordEditText = findViewById(R.id.mot_de_passe);
@@ -54,7 +58,7 @@ public class Login  extends AppCompatActivity {
 
         identifiant = identifiantEditText.getText().toString();
         password = passwordEditText.getText().toString();
-        Toast.makeText(Login.this ,identifiant, Toast.LENGTH_SHORT).show();
+
         Call<LoginResponse> call = RetrofitClient.getInstance().getApi().login(identifiant, password);
 
         if (identifiant.equals("admin")) {
