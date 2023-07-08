@@ -35,7 +35,8 @@ public interface Api {
             @Query("demarrage") String demarrage,
             @Query("localisation") String localisation,
             @Query("date") String date,
-            @Query("horaire") String horaire
+            @Query("horaire") String horaire,
+             @Query("technicien") String technicien
     );
 
     @Headers({"Accept: application/json", "Content-Type:text/html"})

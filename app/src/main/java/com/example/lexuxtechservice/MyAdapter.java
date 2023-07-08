@@ -32,16 +32,18 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ModelviewHolder>{
     @Override
     public void onBindViewHolder(@NonNull ModelviewHolder holder, int position) {
         holder.societe_txt.setText( data.get(position).getSociete());
-        holder.service_txt.setText("Type de service: "+data.get(position).getService());
-        holder.imei_txt.setText("IMEI: "+data.get(position).getImei());
-        holder.sim_txt.setText("Numéro de carte sim: "+data.get(position).getSim());
-        holder.marque_txt.setText("Marque de voiture: "+data.get(position).getVoiture());
-        holder.matricule_txt.setText("Matricule: "+data.get(position).getMatricule());
-        holder.kilometrage_txt.setText("Kilométarge: "+data.get(position).getKilometrage());
-        holder.gps_txt.setText("Marque de GPS: "+data.get(position).getGps());
-        holder.demarrage_txt.setText("Anti-Démarrage: "+data.get(position).getDemarrage());
+        holder.service_txt.setText(data.get(position).getService());
+        holder.imei_txt.setText(data.get(position).getImei());
+        holder.sim_txt.setText(data.get(position).getSim());
+        holder.marque_txt.setText(data.get(position).getVoiture());
+        holder.matricule_txt.setText(data.get(position).getMatricule());
+        holder.kilometrage_txt.setText(data.get(position).getKilometrage());
+        holder.gps_txt.setText(data.get(position).getGps());
+        holder.demarrage_txt.setText(data.get(position).getDemarrage());
         holder.date_txt.setText( data.get(position).getDate());
         holder.horaire_txt.setText( data.get(position).getHoraire());
+        holder.horaire_txt.setText( data.get(position).getHoraire());
+        holder.tech_txt.setText( data.get(position).getTechnicien());
 
 
     }
@@ -53,7 +55,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ModelviewHolder>{
 
     public static class ModelviewHolder extends RecyclerView.ViewHolder {
         TextView  societe_txt, service_txt, imei_txt,gps_txt,sim_txt,marque_txt,matricule_txt,
-                kilometrage_txt,demarrage_txt,date_txt,horaire_txt;
+                kilometrage_txt,demarrage_txt,date_txt,horaire_txt,tech_txt;
 
         ModelviewHolder(@NonNull View itemView) {
             super(itemView);
@@ -70,6 +72,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ModelviewHolder>{
             demarrage_txt = itemView.findViewById(R.id.anti_demarrage);
             date_txt= itemView.findViewById(R.id.date);
             horaire_txt= itemView.findViewById(R.id.horaire);
+            tech_txt=itemView.findViewById((R.id.technicien));
 
         }
     }}

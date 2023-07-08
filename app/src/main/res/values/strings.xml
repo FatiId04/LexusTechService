@@ -14,21 +14,25 @@
     <string name="matricule">  Matricule</string>
     <string name="kilometrage">  Kilométrage</string>
     <string-array name="type_de_service">
-        <item>  Type de service</item>
-        <item>  -----------------</item>
-        <item>branchement</item>
         <item>installation</item>
+        <item>branchement</item>
         <item>changement de carte sim</item>
         <item>changement de boitier</item>
         <item>débranchement</item>
         <item>programmation</item>
     </string-array>
     <string-array name="anti_demarrage">
-        <item>Anti_démarrage</item>
-        <item>  -----------------</item>
-        <item>avec relai</item>
         <item>sans relai</item>
+        <item>avec relai</item>
         <item>Localisation</item>
+    </string-array>
+    <string-array name="marque_gps">
+        <item>Fmb920</item>
+        <item>Fmb920</item>
+        <item>Fmb140</item>
+        <item>Fmb120</item>
+        <item>Fmb240</item>
+        <item>Fma120</item>
     </string-array>
 
 </resources>

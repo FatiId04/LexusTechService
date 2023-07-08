@@ -61,11 +61,11 @@ import retrofit2.Response;
 
 public class Tech extends AppCompatActivity {
 
-    private Spinner serviceSpinner, demarrageSpinner;
+    private Spinner serviceSpinner, demarrageSpinner,gpsSpinner;
     private EditText societeEditText,  simEditText, voitureEditText,
-            kilometrageEditText, gpsEditText,imeiEditText,matriculeEditText;
+            kilometrageEditText, matriculeEditText;
 
-    private TextView AddressText,DateText,HoraireText;
+    private TextView AddressText,imei_txt;
 
     private Button btnValider,btnCapture1,btnCapture2;
 
@@ -85,12 +85,12 @@ public class Tech extends AppCompatActivity {
 
 
         societeEditText = findViewById(R.id.nom_de_societe);
-        imeiEditText = findViewById(R.id.imei);
+        imei_txt = findViewById(R.id.imei);
         simEditText = findViewById(R.id.carte_sim);
         voitureEditText = findViewById(R.id.marque_voiture);
         matriculeEditText= findViewById(R.id.matricule);
         kilometrageEditText = findViewById(R.id.kilometrage);
-        gpsEditText = findViewById(R.id.marque_gps);
+        gpsSpinner = findViewById(R.id.marque_gps);
         btnValider = findViewById(R.id.valider);
         btnCapture1 = findViewById(R.id.capture1);
         btnCapture2= findViewById(R.id.capture2);
@@ -99,7 +99,7 @@ public class Tech extends AppCompatActivity {
         AddressText= findViewById(R.id.adresse);
 
 
-        imeiEditText.setInputType(InputType.TYPE_CLASS_PHONE);
+
         kilometrageEditText.setInputType(InputType.TYPE_CLASS_PHONE);
         simEditText.setInputType(InputType.TYPE_CLASS_PHONE);
 
@@ -121,6 +121,11 @@ public class Tech extends AppCompatActivity {
         adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         demarrageSpinner.setAdapter(adapter2);
 
+        ArrayAdapter<CharSequence> adapter3 = ArrayAdapter.createFromResource(this,
+                R.array.marque_gps, android.R.layout.simple_spinner_item);
+        adapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        gpsSpinner.setAdapter(adapter3);
+
 
         if(ContextCompat.checkSelfPermission(Tech.this, android.Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED){
             ActivityCompat.requestPermissions(Tech.this, new String[]{
@@ -134,8 +139,9 @@ public class Tech extends AppCompatActivity {
             public void onClick(View view) {
                 if(TextUtils.isEmpty(societeEditText.getText().toString()) || TextUtils.isEmpty(serviceSpinner.getSelectedItem().toString())
                         || TextUtils.isEmpty(simEditText.getText().toString())||TextUtils.isEmpty(voitureEditText.getText().toString()) ||
-                TextUtils.isEmpty(gpsEditText.getText().toString())||TextUtils.isEmpty(kilometrageEditText.getText().toString()) ||
-                        TextUtils.isEmpty(demarrageSpinner.getSelectedItem().toString())){
+                TextUtils.isEmpty(kilometrageEditText.getText().toString()) ||
+                        TextUtils.isEmpty(demarrageSpinner.getSelectedItem().toString())|| TextUtils.isEmpty(matriculeEditText.getText().toString())
+                        || TextUtils.isEmpty(imei_txt.getText().toString())){
                     Toast.makeText(Tech.this,"Champs non remplis", Toast.LENGTH_LONG).show();
                 }else{
 
@@ -143,11 +149,13 @@ public class Tech extends AppCompatActivity {
                     openWhatsApp();
                     societeEditText.setText("");
                     matriculeEditText.setText("");
-                    gpsEditText.setText("");
                     voitureEditText.setText("");
                     kilometrageEditText.setText("");
                     simEditText.setText("");
-                    imeiEditText.setText("");
+                    imei_txt.setText("");
+                    serviceSpinner.setSelection(0);
+                    demarrageSpinner.setSelection(0);
+                    gpsSpinner.setSelection(0);
 
 
 
@@ -185,12 +193,15 @@ public class Tech extends AppCompatActivity {
         String sim = simEditText.getText().toString();
         String voiture = voitureEditText.getText().toString();
         String kilometrage = kilometrageEditText.getText().toString();
-        String gps = gpsEditText.getText().toString();
-        String imei=imeiEditText.getText().toString();
+        String gps = gpsSpinner.getSelectedItem().toString();
+        String imei=imei_txt.getText().toString();
         String matricule=matriculeEditText.getText().toString();
         String localisation=AddressText.getText().toString();
         String service=serviceSpinner.getSelectedItem().toString();
         String demarrage=demarrageSpinner.getSelectedItem().toString();
+
+        Bundle b=getIntent().getExtras();
+        String user=b.getString("technicien");
 
         Calendar calendar = Calendar.getInstance();
         Date selectedDate = calendar.getTime();
@@ -203,7 +214,7 @@ public class Tech extends AppCompatActivity {
 
 
         Call<RegisterResponse> call = RetrofitClientRegister.getInstance().getApi().register(societe, service, imei, sim,
-                voiture, matricule, kilometrage, gps, demarrage, localisation,dateString,selectedTime);
+                voiture, matricule, kilometrage, gps, demarrage, localisation,dateString,selectedTime,user);
 
         call.enqueue(new Callback<RegisterResponse>() {
             @Override
@@ -275,7 +286,7 @@ public class Tech extends AppCompatActivity {
                 stringBuilder.append(textBlock.getValue());
                 stringBuilder.append("\n");
             }
-            imeiEditText.setText(stringBuilder.toString());
+            imei_txt.setText(stringBuilder.toString());
 
         }
 
@@ -502,8 +513,8 @@ public class Tech extends AppCompatActivity {
             String sim = simEditText.getText().toString();
             String voiture = voitureEditText.getText().toString();
             String kilometrage = kilometrageEditText.getText().toString();
-            String gps = gpsEditText.getText().toString();
-            String imei=imeiEditText.getText().toString();
+            String gps = gpsSpinner.getSelectedItem().toString();
+            String imei=imei_txt.getText().toString();
             String matricule=matriculeEditText.getText().toString();
             String service=serviceSpinner.getSelectedItem().toString();
             String demarrage=demarrageSpinner.getSelectedItem().toString();

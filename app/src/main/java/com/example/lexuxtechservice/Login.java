@@ -61,7 +61,7 @@ public class Login  extends AppCompatActivity {
 
         Call<LoginResponse> call = RetrofitClient.getInstance().getApi().login(identifiant, password);
 
-        if (identifiant.equals("admin")) {
+        if (identifiant.equals("admin")||identifiant.equals("admin ")) {
             call.enqueue(new Callback<LoginResponse>() {
                 @Override
                 public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
@@ -96,6 +96,9 @@ public class Login  extends AppCompatActivity {
                     LoginResponse loginResponse = response.body();
                     if (loginResponse.getError().equals("200")) {
                         Intent intent1 = new Intent(Login.this, Tech.class);
+                        Bundle b = new Bundle();
+                        b.putString("technicien", identifiantEditText.getText().toString());
+                        intent1.putExtras(b);
                         startActivity(intent1);
                         Toast.makeText(Login.this, loginResponse.getMessage(), Toast.LENGTH_SHORT).show();
                         finish();

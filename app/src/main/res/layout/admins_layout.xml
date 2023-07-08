@@ -23,7 +23,7 @@
             android:id="@+id/date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="312dp"
+            android:layout_marginStart="300dp"
             android:text="Date"
             android:textColor="#000"
             android:textSize="15sp"
@@ -35,9 +35,22 @@
             android:id="@+id/horaire"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="312dp"
+            android:layout_marginStart="300dp"
             android:layout_marginTop="16dp"
-            android:text="Horaire"
+            android:text="horaire"
+            android:textColor="#000"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/technicien"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="300dp"
+            android:layout_marginTop="36dp"
+            android:text="technicien"
             android:textColor="#000"
             android:textSize="15sp"
             android:textStyle="bold"
@@ -48,94 +61,194 @@
             android:id="@+id/nom_de_societe"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
             android:text="Nom de société"
             android:textColor="#000"
-            android:textSize="25sp"
-            android:textStyle="bold"
+            android:textSize="30sp"
+            android:textStyle="bold|italic"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/type_de_service1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="Type de service: "
+            android:textColor="#000"
+            android:textStyle="bold|italic"
+            android:layout_marginTop="5dp"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/nom_de_societe" />
+
 
         <TextView
             android:id="@+id/type_de_service"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="type de service"
+            android:text="service"
             android:textColor="@color/white"
             android:textSize="20sp"
-            app:layout_constraintStart_toStartOf="@+id/nom_de_societe"
-            app:layout_constraintTop_toBottomOf="@+id/nom_de_societe" />
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/type_de_service1"
+            app:layout_constraintTop_toTopOf="@+id/type_de_service1"
+
+            />
+
+        <TextView
+            android:id="@+id/imei1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="IMEI: "
+            android:textColor="#000"
+            android:textStyle="bold|italic"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@+id/type_de_service1"
+            app:layout_constraintTop_toBottomOf="@+id/type_de_service1" />
 
         <TextView
             android:id="@+id/imei"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="IMEI"
+            android:text="imei"
             android:textColor="@color/white"
             android:textSize="20sp"
-            app:layout_constraintStart_toStartOf="@+id/type_de_service"
-            app:layout_constraintTop_toBottomOf="@+id/type_de_service" />
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/imei1"
+            app:layout_constraintTop_toTopOf="@+id/imei1"/>
+
+        <TextView
+            android:id="@+id/carte_sim1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Numéro de carte sim: "
+            android:textColor="#000"
+            android:textStyle="bold|italic"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@+id/imei1"
+            app:layout_constraintTop_toBottomOf="@+id/imei1" />
 
         <TextView
             android:id="@+id/carte_sim"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Num Carte Sim"
+            android:text="sim"
             android:textColor="@color/white"
             android:textSize="20sp"
-            app:layout_constraintStart_toStartOf="@+id/imei"
-            app:layout_constraintTop_toBottomOf="@+id/imei" />
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/carte_sim1"
+            app:layout_constraintTop_toTopOf="@+id/carte_sim1"/>
+
+        <TextView
+            android:id="@+id/marque_voiture1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Marque de voiture: "
+            android:textColor="#000"
+            android:textStyle="bold|italic"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@+id/carte_sim1"
+            app:layout_constraintTop_toBottomOf="@+id/carte_sim1" />
 
         <TextView
             android:id="@+id/marque_voiture"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Marque de voiture"
+            android:text="voiture"
             android:textColor="@color/white"
             android:textSize="20sp"
-            app:layout_constraintStart_toStartOf="@+id/carte_sim"
-            app:layout_constraintTop_toBottomOf="@+id/carte_sim" />
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/marque_voiture1"
+            app:layout_constraintTop_toTopOf="@+id/marque_voiture1"
+          />
 
+        <TextView
+            android:id="@+id/matricule1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Matricule: "
+            android:textColor="#000"
+            android:textStyle="bold|italic"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@+id/marque_voiture1"
+            app:layout_constraintTop_toBottomOf="@+id/marque_voiture1" />
         <TextView
             android:id="@+id/matricule"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Matricule"
+            android:text="matricule"
             android:textColor="@color/white"
             android:textSize="20sp"
-            app:layout_constraintStart_toStartOf="@+id/marque_voiture"
-            app:layout_constraintTop_toBottomOf="@+id/marque_voiture" />
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/matricule1"
+            app:layout_constraintTop_toTopOf="@+id/matricule1"/>
 
+        <TextView
+            android:id="@+id/kilometrage1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Kilométrage: "
+            android:textColor="#000"
+            android:textStyle="bold|italic"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@+id/matricule1"
+            app:layout_constraintTop_toBottomOf="@+id/matricule1" />
         <TextView
             android:id="@+id/kilometrage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Kilometrage"
+            android:text="kilo"
             android:textColor="@color/white"
             android:textSize="20sp"
-            app:layout_constraintStart_toStartOf="@+id/matricule"
-            app:layout_constraintTop_toBottomOf="@+id/matricule" />
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/kilometrage1"
+            app:layout_constraintTop_toTopOf="@+id/kilometrage1"/>
 
+        <TextView
+            android:id="@+id/marque_gps1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Marque de GPS: "
+            android:textColor="#000"
+            android:textStyle="bold|italic"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@+id/kilometrage1"
+            app:layout_constraintTop_toBottomOf="@+id/kilometrage1" />
         <TextView
             android:id="@+id/marque_gps"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Marque de GPS "
+
+            android:text="gps"
             android:textColor="@color/white"
             android:textSize="20sp"
-            app:layout_constraintStart_toStartOf="@+id/kilometrage"
-            app:layout_constraintTop_toBottomOf="@+id/kilometrage" />
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/marque_gps1"
+            app:layout_constraintTop_toTopOf="@+id/marque_gps1"/>
 
+        <TextView
+            android:id="@+id/anti_demarrage1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Anti-Démmarage: "
+            android:textColor="#000"
+            android:textStyle="bold|italic"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@+id/marque_gps1"
+            app:layout_constraintTop_toBottomOf="@+id/marque_gps1" />
         <TextView
             android:id="@+id/anti_demarrage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Anti_démmarage"
+            android:text="dem"
             android:textColor="@color/white"
             android:textSize="20sp"
-            app:layout_constraintStart_toStartOf="@+id/marque_gps"
-            app:layout_constraintTop_toBottomOf="@+id/marque_gps" />
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/anti_demarrage1"
+            app:layout_constraintTop_toTopOf="@+id/anti_demarrage1"/>
 
 
 

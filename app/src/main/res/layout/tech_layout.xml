@@ -46,9 +46,9 @@
        android:layout_marginTop="25dp"
        android:background="@drawable/style"
        >
-    <EditText
+    <TextView
         android:id="@+id/imei"
-        android:layout_height="80dp"
+        android:layout_height="30dp"
         android:layout_width="300dp"
         android:hint="IMEI"
         android:textSize="20sp"
@@ -142,13 +142,13 @@
        android:hint="@string/kilometrage"
        android:layout_marginTop="25dp"/>
 
-   <EditText
+   <Spinner
        android:id="@+id/marque_gps"
        android:layout_width="fill_parent"
        android:layout_height="60dp"
        android:layout_gravity="center"
        android:background="@drawable/style"
-       android:hint="@string/marque_gps"
+       android:entries="@array/marque_gps"
        android:layout_marginTop="25dp"/>
 
    <Spinner

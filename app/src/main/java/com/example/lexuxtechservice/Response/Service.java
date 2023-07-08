@@ -2,10 +2,10 @@ package com.example.lexuxtechservice.Response;
 
 public class Service {
     String  societe,service,imei,sim,
-            voiture,matricule,kilometrage,gps,demarrage,localisation,date,horaire;
+            voiture,matricule,kilometrage,gps,demarrage,localisation,date,horaire,technicien;
 
     public Service(String societe, String service, String imei, String sim, String voiture, String matricule, String kilometrage,
-                   String gps, String demarrage, String localisation,String horaire,String date) {
+                   String gps, String demarrage, String localisation,String horaire,String date,String technicien) {
         this.societe = societe;
         this.service = service;
         this.imei = imei;
@@ -18,6 +18,7 @@ public class Service {
         this.localisation = localisation;
         this.date=date;
         this.horaire=horaire;
+        this.technicien=technicien;
     }
 
     public String getSociete() {
@@ -114,5 +115,13 @@ public class Service {
 
     public void setHoraire(String horaire) {
         this.horaire = horaire;
+    }
+
+    public String getTechnicien() {
+        return technicien;
+    }
+
+    public void setTechnicien(String technicien) {
+        this.technicien = technicien;
     }
 }
