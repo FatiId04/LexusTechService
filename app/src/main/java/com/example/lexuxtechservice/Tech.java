@@ -25,6 +25,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResultLauncher;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -46,6 +47,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.gms.vision.Frame;
 import com.google.android.gms.vision.text.TextBlock;
 import com.google.android.gms.vision.text.TextRecognizer;
+import com.journeyapps.barcodescanner.ScanContract;
+import com.journeyapps.barcodescanner.ScanOptions;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 
@@ -169,8 +172,9 @@ public class Tech extends AppCompatActivity {
         btnCapture1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                      buttonIdentifier = 1;
-                     CropImage.activity().setGuidelines(CropImageView.Guidelines.ON).start(Tech.this);
+                      //buttonIdentifier = 1;
+                    // CropImage.activity().setGuidelines(CropImageView.Guidelines.ON).start(Tech.this);
+                scanCode();
                 }
 
         });
@@ -293,7 +297,7 @@ public class Tech extends AppCompatActivity {
     }
     private void getTextFromImage1(Bitmap bitmap){
 
-        String mat,matricule="";
+
         TextRecognizer recognizer = new TextRecognizer.Builder(this).build();
         if (!recognizer.isOperational()){
             Toast.makeText(Tech.this,"Error", Toast.LENGTH_SHORT).show();
@@ -306,85 +310,14 @@ public class Tech extends AppCompatActivity {
                 stringBuilder.append(textBlock.getValue());
                 stringBuilder.append("\n");
             }
-           mat=stringBuilder.toString();
 
 
-            for (int i = 0; i < mat.length(); i++) {
-                char caractereCourant= mat.charAt(i);
-                char caractereAssocie= association(caractereCourant);
-                matricule+=caractereAssocie;
-            }
-
-
-
-            matriculeEditText.setText(matricule);
-            Toast.makeText(Tech.this, matricule, Toast.LENGTH_SHORT).show();
+            matriculeEditText.setText(stringBuilder.toString());
 
         }
 
     }
 
-
-    public static char association(char caractere) {
-
-        if (caractere=='أ' ) {
-            return 'A';
-        } else if (caractere== 'ب') {
-            return 'B';
-        } else if (caractere == 'ت') {
-            return 'T';
-        } else if (caractere == 'ث') {
-            return 't';
-        } else if (caractere == 'ج') {
-            return 'J';
-        } else if (caractere== 'ح') {
-            return 'H';
-        } else if (caractere == 'خ') {
-            return 'k';
-        } else if (caractere == 'د') {
-            return 'D';
-        } else if (caractere== 'ذ') {
-            return 'd';
-        } else if (caractere == 'ر') {
-            return 'R';
-        } else if (caractere == 'ز') {
-            return 'Z';
-        } else if (caractere == 'س') {
-            return 'S';
-        } else if (caractere == 'ش') {
-            return 's';
-        } else if (caractere == 'ص') {
-            return 's';
-        } else if (caractere == 'ض') {
-            return 'd';
-        } else if (caractere== 'ط') {
-            return 'T';
-        } else if (caractere== 'ظ') {
-            return 'z';
-        } else if (caractere == 'ع') {
-            return 'a';
-        } else if (caractere == 'ف') {
-            return 'F';
-        } else if (caractere == 'ق') {
-            return 'Q';
-        } else if (caractere == 'ك') {
-            return 'K';
-        } else if (caractere == 'ل') {
-            return 'L';
-        } else if (caractere == 'م') {
-            return 'M';
-        } else if (caractere== 'ن') {
-            return 'N';
-        } else if (caractere == 'ه') {
-            return 'H';
-        } else if (caractere == 'و') {
-            return 'W';
-        } else if (caractere== 'ي' ) {
-            return 'Y';
-        }
-
-        return caractere;
-    }
 
 
 
@@ -539,6 +472,18 @@ public class Tech extends AppCompatActivity {
         }
 
     }
+    private void scanCode(){
+        ScanOptions options = new ScanOptions();
+        options.setTorchEnabled(true);
+        options.setOrientationLocked(true);
+        options.setCaptureActivity(CaptureAct.class);
+        barLauncher.launch(options);
+
+    }
+    ActivityResultLauncher<ScanOptions> barLauncher =registerForActivityResult(new ScanContract(),result -> {
+        imei_txt.setText(result.getContents());
+
+    });
 
 
 
