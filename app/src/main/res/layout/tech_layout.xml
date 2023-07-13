@@ -77,14 +77,42 @@
 
    </androidx.constraintlayout.widget.ConstraintLayout>
 
-   <EditText
-       android:id="@+id/carte_sim"
+   <androidx.constraintlayout.widget.ConstraintLayout
        android:layout_width="fill_parent"
        android:layout_height="60dp"
-       android:layout_gravity="center"
+       android:layout_marginTop="25dp"
        android:background="@drawable/style"
-       android:hint="@string/carte_sim"
-       android:layout_marginTop="25dp"/>
+       >
+    <EditText
+        android:id="@+id/sim"
+        android:layout_height="80dp"
+        android:layout_width="300dp"
+        android:hint="Carte Sim"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5"
+        />
+
+
+
+    <Button
+        android:id="@+id/capture3"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:background="@drawable/camera"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.97"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5" />
+
+   </androidx.constraintlayout.widget.ConstraintLayout>
 
 
    <EditText

@@ -27,7 +27,7 @@ public class Login  extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_layout);
 
-
+        // Masquer la barre d'action
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.hide();
@@ -41,11 +41,11 @@ public class Login  extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                // Vérifie si les champs d'identifiant et de mot de passe sont vides
                 if (TextUtils.isEmpty(identifiantEditText.getText().toString()) || TextUtils.isEmpty(passwordEditText.getText().toString())) {
                     Toast.makeText(Login.this, "Champs non remplis", Toast.LENGTH_LONG).show();
                 } else {
-                    //proceed to login
+                    //proceder a la connexion
                     login();
                 }
 
@@ -59,8 +59,9 @@ public class Login  extends AppCompatActivity {
         identifiant = identifiantEditText.getText().toString();
         password = passwordEditText.getText().toString();
 
+        // Créer l'appel à l'API pour effectuer la connexion
         Call<LoginResponse> call = RetrofitClient.getInstance().getApi().login(identifiant, password);
-
+        // Si l'identifiant est egale a "admin" , l utilisateur va etre diriger le layout de l administrateur
         if (identifiant.equals("admin")||identifiant.equals("admin ")) {
             call.enqueue(new Callback<LoginResponse>() {
                 @Override
@@ -68,6 +69,7 @@ public class Login  extends AppCompatActivity {
 
                     LoginResponse loginResponse = response.body();
                     if (loginResponse.getError().equals("200")) {
+                        // Si la connexion est réussie,  l'activité admin sera lance
                         Intent intent = new Intent(Login.this, Admin.class);
                         startActivity(intent);
                         Toast.makeText(Login.this, loginResponse.getMessage(), Toast.LENGTH_SHORT).show();
@@ -87,7 +89,7 @@ public class Login  extends AppCompatActivity {
 
                 }
             });
-
+            // Si l'identifiant est different de "admin" , l utilisateur va etre diriger le layout du technicien
         } else {
             call.enqueue(new Callback<LoginResponse>() {
                 @Override
@@ -95,6 +97,7 @@ public class Login  extends AppCompatActivity {
 
                     LoginResponse loginResponse = response.body();
                     if (loginResponse.getError().equals("200")) {
+                        // Si la connexion est réussie,  l'activité Tech sera lance avec l'identifiant en extra
                         Intent intent1 = new Intent(Login.this, Tech.class);
                         Bundle b = new Bundle();
                         b.putString("technicien", identifiantEditText.getText().toString());

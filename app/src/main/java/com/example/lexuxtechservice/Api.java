@@ -15,6 +15,7 @@ import retrofit2.http.Query;
 
 public interface Api {
         @Headers({"Accept: application/json", "Content-Type:text/html"})
+        //l'appel d'API de connexion
         @GET("login.php")
     Call<LoginResponse> login(
             @Query("identifiant") String identifiant,
@@ -22,6 +23,7 @@ public interface Api {
     );
 
     @Headers({"Accept: application/json", "Content-Type:text/html"})
+    //  l'appel d'API d'enregistrement des donnees concernant chaque service
     @GET("register.php")
     Call<RegisterResponse> register(
             @Query("societe") String societe,
@@ -40,6 +42,8 @@ public interface Api {
     );
 
     @Headers({"Accept: application/json", "Content-Type:text/html"})
+
+    // l'appel d'API de récupération de touts les services effectues
     @GET("admin.php")
     Call<List<Service2 >> getData();
 

@@ -20,6 +20,11 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ModelviewHolder>{
         this.data = data;
     }
 
+    public void setSearchList(List<Service2> dataSearchList){
+        this.data = dataSearchList;
+        notifyDataSetChanged();
+    }
+
     @NonNull
     @Override
     public ModelviewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -41,7 +46,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ModelviewHolder>{
         holder.gps_txt.setText(data.get(position).getGps());
         holder.demarrage_txt.setText(data.get(position).getDemarrage());
         holder.date_txt.setText( data.get(position).getDate());
-        holder.horaire_txt.setText( data.get(position).getHoraire());
         holder.horaire_txt.setText( data.get(position).getHoraire());
         holder.tech_txt.setText( data.get(position).getTechnicien());
 
