@@ -117,9 +117,14 @@ public class Tech extends AppCompatActivity {
         // Définir l'intervalle de mise à jour de la localisation le plus rapide à 2000 millisecondes
         locationRequest.setFastestInterval(2000);
 
+
+        // Créer un ArrayAdapter à partir de la ressource "R.array.type_de_service"
+        // La ressource "R.array.type_de_service" est une liste des service qu un technicien peut realiser
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.type_de_service, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        // Associer l'adaptateur (ArrayAdapter) au Spinner (serviceSpinner)
+        // Cela permet d'afficher les éléments du spinner en utilisant l'adaptateur
         serviceSpinner.setAdapter(adapter);
 
         ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(this,
@@ -196,7 +201,7 @@ public class Tech extends AppCompatActivity {
         });
 
         //button pour scanner la carte sim
-        btnCapture1.setOnClickListener(new View.OnClickListener() {
+        btncapture3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 scanCode1();
@@ -460,7 +465,7 @@ public class Tech extends AppCompatActivity {
 
             // Créer le texte à partager via WhatsApp en utilisant les valeurs récupérées
             String text = "Nom de société: "+societe+"\n"+"Type de service: "+service+"\n"+"IMEI: "+imei+"\n"+
-                    "Carte Sim: "+sim+"\n"+"Marque de voiture: "+voiture+"\n"+"Matricule: "+matricule+"\n"+
+                    "Carte Sim: "+sim+"\n"+"Marque de voiture: "+voiture+"\n"+"Matricule: "+matricule+
                     "Kilométrage: "+kilometrage+"\n"+"Marque de GPS: "+gps+"\n"+"Anti-Démarrage: "+demarrage+"\n";
 
             // Vérifier si l'application WhatsApp est installée sur l'appareil
@@ -500,8 +505,11 @@ public class Tech extends AppCompatActivity {
 
     }
     ActivityResultLauncher<ScanOptions> barLauncher1 =registerForActivityResult(new ScanContract(),result -> {
-        // Récupère le contenu du code scanné et l'affiche dans le TextView "sim_txt"
-        sim_txt.setText(result.getContents());
+        // Récupèrer le contenu du code scanné
+        String resultat = result.getContents();
+        //eliminer le premier cartere de la chaine puis concatener "00212"avec le resultatl'affiche dans le TextView "sim_txt"
+
+        sim_txt.setText("00212"+resultat.substring(1));
 
     });
 

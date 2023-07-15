@@ -20,6 +20,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ModelviewHolder>{
         this.data = data;
     }
 
+
+    // Méthode pour mettre à jour la liste des données de recherche
     public void setSearchList(List<Service2> dataSearchList){
         this.data = dataSearchList;
         notifyDataSetChanged();
@@ -36,6 +38,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ModelviewHolder>{
 
     @Override
     public void onBindViewHolder(@NonNull ModelviewHolder holder, int position) {
+        // Récupérer les données pour la position donnée et les définir dans les éléments de l'interface admin
         holder.societe_txt.setText( data.get(position).getSociete());
         holder.service_txt.setText(data.get(position).getService());
         holder.imei_txt.setText(data.get(position).getImei());

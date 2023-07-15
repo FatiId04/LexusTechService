@@ -10,7 +10,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitAdmin {
 
-    private static String BASE_URL="http://192.168.0.197/apiLexus/admin.php/";
+    private static String BASE_URL="http://172.20.10.9/apiLexus/admin.php/";
     private static RetrofitAdmin retrofitAdmin;
     private static Retrofit retrofit = null;
     private OkHttpClient.Builder builder=new OkHttpClient.Builder();
