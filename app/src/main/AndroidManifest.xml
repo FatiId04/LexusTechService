@@ -35,6 +35,7 @@
         <activity android:name=".Tech"></activity>
         <activity android:name=".Admin"></activity>
         <activity android:name=".Ajout"></activity>
+        <activity android:name=".AjoutTech"></activity>
         <activity android:name="com.theartofdev.edmodo.cropper.CropImageActivity"/>
         <activity android:name=".CaptureAct"
             android:screenOrientation="portrait"></activity>

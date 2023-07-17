@@ -5,6 +5,11 @@
             android:orderInCategory="100"
             app:showAsAction="never"
             android:title="Ajouter un boitier" />
+    <item android:id="@+id/ajout_tech"
+        android:orderInCategory="100"
+        app:showAsAction="never"
+        android:title="Ajouter un technicien "/>
+
     <item android:id="@+id/logout"
         android:orderInCategory="100"
         app:showAsAction="never"

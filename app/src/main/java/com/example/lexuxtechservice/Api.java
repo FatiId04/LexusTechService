@@ -1,6 +1,7 @@
 package com.example.lexuxtechservice;
 
 import com.example.lexuxtechservice.Response.AjoutResponse;
+import com.example.lexuxtechservice.Response.AjoutTechResponse;
 import com.example.lexuxtechservice.Response.Boitier;
 import com.example.lexuxtechservice.Response.LoginResponse;
 import com.example.lexuxtechservice.Response.RegisterResponse;
@@ -58,6 +59,16 @@ public interface Api {
     // l'appel d'API de récupération de touts les boitiers
     @GET("getBoitier.php")
     Call<List<Boitier>> getData1();
+
+
+    @Headers({"Accept: application/json", "Content-Type:text/html"})
+    //  l'appel d'API d'enregistrement des techniciens
+    @GET("ajout_tech.php")
+    Call<AjoutTechResponse> register1(
+            @Query("identifiant") String identifiant,
+            @Query("password") String password
+
+    );
 
 
 

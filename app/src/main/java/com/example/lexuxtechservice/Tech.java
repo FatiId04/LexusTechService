@@ -145,12 +145,10 @@ public class Tech extends AppCompatActivity {
                 ArrayList<String>gps=new ArrayList<>();
                 List<Boitier> data1 = response.body();
                 for(Boitier data:data1){
-                   gps.add(data.getNom_boitier());
+                   gps.add(data.getBoitier());
 
                     }
 
-
-                Toast.makeText(Tech.this,data1.toString(),Toast.LENGTH_LONG).show();
                 ArrayAdapter<String> adapter3 = new ArrayAdapter<>(Tech.this, android.R.layout.simple_spinner_item, gps);
                 adapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 gpsSpinner.setAdapter(adapter3);

@@ -93,6 +93,10 @@ public class Admin extends AppCompatActivity {
                 Intent intent = new Intent(Admin.this,Ajout.class);
                 startActivity(intent);
                 return true;
+            case R.id.ajout_tech:
+                Intent intent2 = new Intent(Admin.this,AjoutTech.class);
+                startActivity(intent2);
+                return true;
 
             case R.id.logout:
                 Intent intent1 = new Intent(Admin.this,Login.class);

@@ -124,7 +124,7 @@
             android:id="@+id/carte_sim1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Numéro de carte sim: "
+            android:text="N carte sim: "
             android:textColor="#000"
             android:textStyle="bold|italic"
             android:textSize="20sp"
