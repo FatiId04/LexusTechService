@@ -1,10 +1,13 @@
 package com.example.lexuxtechservice;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.SearchView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.ActionBar;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -30,11 +33,7 @@ public class Admin extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.recyclerview);
 
-        // Masquer la barre d'action
-        ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null) {
-            actionBar.hide();
-        }
+
 
         recyclerView = findViewById(R.id.recyclerView);
         searchView = findViewById(R.id.search);
@@ -81,6 +80,30 @@ public class Admin extends AppCompatActivity {
         });
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.admin_menu,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch(item.getItemId()){
+            case R.id.ajout:
+                Intent intent = new Intent(Admin.this,Ajout.class);
+                startActivity(intent);
+                return true;
+
+            case R.id.logout:
+                Intent intent1 = new Intent(Admin.this,Login.class);
+                startActivity(intent1);
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+
+    }
 
     /**
      * Effectue une recherche dans la liste des services en fonction du text spécifié.

@@ -1,14 +1,14 @@
 package com.example.lexuxtechservice;
 
+import com.example.lexuxtechservice.Response.AjoutResponse;
+import com.example.lexuxtechservice.Response.Boitier;
 import com.example.lexuxtechservice.Response.LoginResponse;
 import com.example.lexuxtechservice.Response.RegisterResponse;
 import com.example.lexuxtechservice.Response.Service2;
 
-
 import java.util.List;
 
 import retrofit2.Call;
-
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
 import retrofit2.http.Query;
@@ -46,6 +46,18 @@ public interface Api {
     // l'appel d'API de récupération de touts les services effectues
     @GET("admin.php")
     Call<List<Service2 >> getData();
+
+    @Headers({"Accept: application/json", "Content-Type:text/html"})
+    @GET("ajout_boitier.php")
+    Call<AjoutResponse> ajout(
+            @Query("boitier") String boitier
+    );
+
+    @Headers({"Accept: application/json", "Content-Type:text/html"})
+
+    // l'appel d'API de récupération de touts les boitiers
+    @GET("getBoitier.php")
+    Call<List<Boitier>> getData1();
 
 
 

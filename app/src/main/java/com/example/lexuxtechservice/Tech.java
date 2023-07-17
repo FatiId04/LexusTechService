@@ -32,6 +32,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import com.example.lexuxtechservice.Response.Boitier;
 import com.example.lexuxtechservice.Response.RegisterResponse;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.common.api.ResolvableApiException;
@@ -55,8 +56,10 @@ import com.theartofdev.edmodo.cropper.CropImageView;
 import java.io.IOException;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -132,10 +135,35 @@ public class Tech extends AppCompatActivity {
         adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         demarrageSpinner.setAdapter(adapter2);
 
-        ArrayAdapter<CharSequence> adapter3 = ArrayAdapter.createFromResource(this,
-                R.array.marque_gps, android.R.layout.simple_spinner_item);
-        adapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        gpsSpinner.setAdapter(adapter3);
+
+
+        Call<List<Boitier>>call= RetrofitBoitier.getInstance().getApi().getData1();
+
+        call.enqueue(new Callback<List<Boitier >>() {
+            @Override
+            public void onResponse(Call< List<Boitier>> call, Response< List<Boitier >> response) {
+                ArrayList<String>gps=new ArrayList<>();
+                List<Boitier> data1 = response.body();
+                for(Boitier data:data1){
+                   gps.add(data.getNom_boitier());
+
+                    }
+
+
+                Toast.makeText(Tech.this,data1.toString(),Toast.LENGTH_LONG).show();
+                ArrayAdapter<String> adapter3 = new ArrayAdapter<>(Tech.this, android.R.layout.simple_spinner_item, gps);
+                adapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                gpsSpinner.setAdapter(adapter3);
+
+            }
+
+            @Override
+            public void onFailure(Call< List<Boitier >> call, Throwable t) {
+                Toast.makeText(Tech.this,t.getMessage(),Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
 
         // Verifier si la permission CAMERA n'a pas encore été accordée à l'activité "Tech"
         if(ContextCompat.checkSelfPermission(Tech.this, android.Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED){
